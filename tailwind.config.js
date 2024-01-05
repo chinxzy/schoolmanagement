@@ -6,7 +6,9 @@ module.exports = {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
-    "./app.vue"
+    "./app.vue",
+  "./src/*.js",
+  "./src/*.ts"
   ],
 
   theme: {
@@ -16,6 +18,10 @@ module.exports = {
         logoColor: '#21293D',
         logoColorLight: '#27334f'
       },
+      height: {
+        auto: 'auto'
+      },
+
     },
   },
   plugins: [],

@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-slate-50">
-    <div class="flex h-screen">
+  <div class="bg-slate-50 h-auto">
+    <div class="flex h-auto">
       <!-- Sidebar -->
       <div
         :class="{
@@ -17,12 +17,20 @@
           'p-4': true,
           'shadow-2xl': true,
           'border-gray-100': true,
-          'h-screen': true,
+          'h-auto': true,
         }"
       >
         <div class="py-2 mb-20">
-          <img src="/logo.png" width="50" class="fixed" />
-          <button class="fixed" @click="toggleCollapse()">
+          <img src="/logo.png" width="60" class="fixed left-2" />
+          <button
+            :class="{
+              'left-20': !collapsed,
+              'top-10': !collapsed,
+              'top-20': collapsed,
+              fixed: true,
+            }"
+            @click="toggleCollapse()"
+          >
             <font-awesome-icon
               icon="fa-solid fa-angles-right"
               :class="{
@@ -36,10 +44,6 @@
                 'hover:translate-x-4': collapsed,
                 'duration-500': true,
                 'rotate-180': !collapsed,
-                'left-20': !collapsed,
-                'top-3': !collapsed,
-                'top-20': collapsed,
-                relative: true,
               }"
             />
           </button>
@@ -84,7 +88,7 @@
         </ul>
       </div>
       <!-- Content -->
-      <div class="flex-1 bg-neutral-50 z-50">
+      <div class="flex-1 bg-neutral-50 z-50 min-h-screen">
         <NuxtPage />
       </div>
     </div>
@@ -96,7 +100,7 @@ import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   setup() {
-    const collapsed = ref(false);
+    const collapsed = ref(true);
     const toggleCollapse = () => {
       collapsed.value = !collapsed.value;
     };

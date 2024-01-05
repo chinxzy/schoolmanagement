@@ -9,6 +9,8 @@ export default defineNuxtConfig({
         plugins: {
           tailwindcss: {},
           autoprefixer: {},
+          
+          
         },
       },
       components: {
@@ -21,5 +23,17 @@ export default defineNuxtConfig({
           
         ],
       },
+      modules: [
+        // ...
+        '@pinia/nuxt',
+        'nuxt-headlessui'
+        
+      ],
+      build: {
+        transpile: ['chart.js']
+      },
+      plugins: [
+        { src: '~/plugins/apexChart.ts', mode: 'client' }
+      ]
      
 })
