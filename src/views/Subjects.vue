@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useSubjectStore } from "@/stores/subject";
 import type { TableColumn } from "@/types";
 import DataTable from "@/components/DataTable.vue";
@@ -48,7 +48,7 @@ async function submit() {
 }
 watch(
   () => pagination.value.currentPage,
-  async (newPage) => {
+  async () => {
     await store.getSubjects(pagination.value);
   },
 );

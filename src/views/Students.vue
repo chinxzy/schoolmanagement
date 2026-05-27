@@ -10,12 +10,12 @@ const store = useStudentStore();
 const search = ref("");
 
 const columns: TableColumn[] = [
-  { id: 1, label: "First Name", field: "firstname" },
-  { id: 2, label: "Last Name", field: "lastname" },
-  { id: 3, label: "Gender", field: "gender" },
-  { id: 4, label: "Class", field: "classname" },
-  { id: 5, label: "Class Type", field: "classtype_name" },
-  { id: 6, label: "Class Teacher", field: "teacher_firstname" },
+  { id: "", label: "First Name", field: "firstname" },
+  { id: "", label: "Last Name", field: "lastname" },
+  { id: "", label: "Gender", field: "gender" },
+  { id: "", label: "Class", field: "classname" },
+  { id: "", label: "Class Type", field: "classtype_name" },
+  { id: "", label: "Class Teacher", field: "teacher_firstname" },
 ];
 
 const filteredStudents = computed(() => {
