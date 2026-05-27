@@ -7,6 +7,7 @@ interface Props {
   loading?: boolean;
 }
 defineProps<Props>();
+const emit = defineEmits<{ "row-click": [row: Record<string, unknown>] }>();
 </script>
 
 <template>
@@ -43,7 +44,8 @@ defineProps<Props>();
         <tr
           v-for="(row, i) in data"
           :key="i"
-          class="border-b transition-colors hover:bg-muted/50"
+          class="border-b transition-colors hover:bg-muted/50 cursor-pointer"
+          @click="emit('row-click', row)"
         >
           <td v-for="col in columns" :key="col.id" class="p-4 align-middle">
             {{ row[col.field] }}

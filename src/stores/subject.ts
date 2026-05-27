@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import ApiService from "@/core/services/ApiService";
-import type { SubjectData, NewSubject } from "@/types/subject";
+import type { SubjectData, NewSubject, UpdateSubject } from "@/types/subject";
 
 export const useSubjectStore = defineStore("subject", {
   state: () => ({
@@ -44,6 +44,21 @@ export const useSubjectStore = defineStore("subject", {
       } catch (e) {
         this.error = true;
         console.error("Error adding subject:", e);
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async updateSubject(id: string, details: UpdateSubject) {
+      this.loading = true;
+      this.error = false;
+      this.success = false;
+      try {
+        await ApiService.put(`/subject/update/${id}`, details);
+        this.success = true;
+      } catch (e) {
+        this.error = true;
+        console.error("Error updating subject:", e);
       } finally {
         this.loading = false;
       }

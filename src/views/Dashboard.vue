@@ -13,10 +13,10 @@ const subjectStore = useSubjectStore();
 
 onMounted(async () => {
   await Promise.all([
+    subjectStore.getSubjects(),
     teacherStore.getTeachers(),
     studentStore.getStudents(),
     classStore.getClasses(),
-    subjectStore.getSubjects(),
   ]);
 });
 
