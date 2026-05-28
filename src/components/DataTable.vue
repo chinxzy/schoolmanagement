@@ -22,12 +22,16 @@ const emit = defineEmits<{ "row-click": [row: Record<string, unknown>] }>();
           >
             {{ col.label }}
           </th>
+          <th
+            v-if="$slots.actions"
+            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground w-16"
+          ></th>
         </tr>
       </thead>
       <tbody class="[&_tr:last-child]:border-0">
         <tr v-if="loading">
           <td
-            :colspan="columns.length"
+            :colspan="$slots.actions ? columns.length + 1 : columns.length"
             class="p-8 text-center text-muted-foreground"
           >
             Loading…
@@ -35,7 +39,7 @@ const emit = defineEmits<{ "row-click": [row: Record<string, unknown>] }>();
         </tr>
         <tr v-else-if="!data.length">
           <td
-            :colspan="columns.length"
+            :colspan="$slots.actions ? columns.length + 1 : columns.length"
             class="p-8 text-center text-muted-foreground"
           >
             No records found.
@@ -49,6 +53,9 @@ const emit = defineEmits<{ "row-click": [row: Record<string, unknown>] }>();
         >
           <td v-for="col in columns" :key="col.id" class="p-4 align-middle">
             {{ row[col.field] }}
+          </td>
+          <td v-if="$slots.actions" class="p-4 align-middle">
+            <slot name="actions" :row="row" />
           </td>
         </tr>
       </tbody>
